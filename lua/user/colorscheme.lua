@@ -1,3 +1,8 @@
-lvim.colorscheme = "lunar"
+local colorschemes = {
+    witch = 'witch',
+    lunar = 'lunar',
+}
 
-lvim.transparent_window = true
+lvim.colorscheme = colorschemes.witch
+
+-- lvim.transparent_window = true

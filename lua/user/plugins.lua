@@ -1,5 +1,6 @@
  -- https://www.lunarvim.org/docs/features/supported-frameworks/angular
 require("lvim.lsp.manager").setup("angularls")
+require("lvim.lsp.manager").setup("emmet_ls")
 
 require('nvim-ts-autotag').setup({
   opts = {
@@ -13,7 +14,7 @@ require('nvim-ts-autotag').setup({
   -- doesn't work well in a specific filetype
   per_filetype = {
     ["html"] = {
-      enable_close = false
+      enable_close = true
     }
   }
 })
@@ -23,31 +24,27 @@ lvim.plugins = {
   { 'SirVer/ultisnips' },
   { 'honza/vim-snippets' },
   { "nvim-treesitter/nvim-treesitter-angular" },
-  -- {
-  --   "zbirenbaum/copilot.lua",
-  --   cmd = "Copilot",
-  --   event = "InsertEnter",
-  --   config = function()
-  --   require("copilot").setup({})
-  --   end,
-  -- },
-  -- {
-  --   "zbirenbaum/copilot-cmp",
-  --   config = function ()
-  --     require("copilot_cmp").setup({
-  --       suggestion = { enabled = false },
-  --       panel = { enabled = false }
-  --     })
-  --   end
-  -- },
+   {
+        "sontungexpt/witch",
+        priority = 1000,
+        lazy = false,
+        config = function(_, opts)
+            require("witch").setup(opts)
+        end,
+    },
    {
     'Exafunction/codeium.vim',
     config = function ()
-      -- Change '<C-g>' here to any keycode you like.
       vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+
+      vim.g.codeium_filetypes = {
+        javascript = true,
+        typescript = true,
+        html = false,
+      }
     end
   },
   {
