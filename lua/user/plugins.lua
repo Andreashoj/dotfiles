@@ -1,0 +1,92 @@
+ -- https://www.lunarvim.org/docs/features/supported-frameworks/angular
+require("lvim.lsp.manager").setup("angularls")
+
+require('nvim-ts-autotag').setup({
+  opts = {
+    -- Defaults
+    enable_close = true, -- Auto close tags
+    enable_rename = true, -- Auto rename pairs of tags
+    enable_close_on_slash = false -- Auto close on trailing </
+  },
+  -- Also override individual filetype configs, these take priority.
+  -- Empty by default, useful if one of the "opts" global settings
+  -- doesn't work well in a specific filetype
+  per_filetype = {
+    ["html"] = {
+      enable_close = false
+    }
+  }
+})
+
+lvim.plugins = {
+  { 'eandrju/cellular-automaton.nvim' },
+  { 'SirVer/ultisnips' },
+  { 'honza/vim-snippets' },
+  { "nvim-treesitter/nvim-treesitter-angular" },
+  -- {
+  --   "zbirenbaum/copilot.lua",
+  --   cmd = "Copilot",
+  --   event = "InsertEnter",
+  --   config = function()
+  --   require("copilot").setup({})
+  --   end,
+  -- },
+  -- {
+  --   "zbirenbaum/copilot-cmp",
+  --   config = function ()
+  --     require("copilot_cmp").setup({
+  --       suggestion = { enabled = false },
+  --       panel = { enabled = false }
+  --     })
+  --   end
+  -- },
+   {
+    'Exafunction/codeium.vim',
+    config = function ()
+      -- Change '<C-g>' here to any keycode you like.
+      vim.keymap.set('i', '<C-g>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-;>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-,>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+    end
+  },
+  {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  },
+  { 'rhysd/git-messenger.vim' },
+  {
+   "folke/trouble.nvim",
+   dependencies = { "nvim-tree/nvim-web-devicons" },
+  },
+  { 'ThePrimeagen/harpoon' },
+  { 'tpope/vim-surround' },
+  { 'jwalton512/vim-blade' },
+  { 
+    'theHamsta/nvim-dap-virtual-text'
+  },
+  {
+  "adalessa/laravel.nvim",
+    dependencies = {
+      "nvim-telescope/telescope.nvim",
+      "tpope/vim-dotenv",
+      "MunifTanjim/nui.nvim",
+      "nvimtools/none-ls.nvim",
+    },
+    cmd = { "Sail", "Artisan", "Composer", "Npm", "Yarn", "Laravel" },
+    keys = {
+      { "<leader>la", ":Laravel artisan<cr>" },
+      { "<leader>lr", ":Laravel routes<cr>" },
+      { "<leader>lm", ":Laravel related<cr>" },
+    },
+    event = { "VeryLazy" },
+    config = true,
+  },
+  {
+    'windwp/nvim-ts-autotag',
+  }
+}
