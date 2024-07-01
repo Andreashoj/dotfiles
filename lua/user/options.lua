@@ -48,9 +48,9 @@ lvim.builtin.treesitter.highlight.enable = true
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
   {
-    -- exe = "eslint",
+    exe = "eslint",
     -- exe = "prettier",
-    exe = "prettierd",
+    -- exe = "prettierd",
     filetypes = {
       "html",
       "javascriptreact",

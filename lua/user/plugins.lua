@@ -20,6 +20,7 @@ require('nvim-ts-autotag').setup({
 })
 
 lvim.plugins = {
+  { 'christoomey/vim-tmux-navigator' },
   { 'eandrju/cellular-automaton.nvim' },
   { 'SirVer/ultisnips' },
   { 'honza/vim-snippets' },

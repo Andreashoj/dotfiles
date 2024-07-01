@@ -5,4 +5,4 @@ local colorschemes = {
 
 lvim.colorscheme = colorschemes.witch
 
--- lvim.transparent_window = true
+lvim.transparent_window = true
