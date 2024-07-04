@@ -21,3 +21,6 @@ lvim.keys.normal_mode["<leader>1"] = ":lua require(\"harpoon.ui\").nav_file(1)<C
 lvim.keys.normal_mode["<leader>2"] = ":lua require(\"harpoon.ui\").nav_file(2)<CR>"
 lvim.keys.normal_mode["<leader>3"] = ":lua require(\"harpoon.ui\").nav_file(3)<CR>"
 lvim.keys.normal_mode["<leader>4"] = ":lua require(\"harpoon.ui\").nav_file(4)<CR>"
+
+-- Fugitive
+lvim.keys.normal_mode["<leader>gh"] = ":0Gclog<CR>"

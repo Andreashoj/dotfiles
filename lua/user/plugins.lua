@@ -20,6 +20,25 @@ require('nvim-ts-autotag').setup({
 })
 
 lvim.plugins = {
+  {
+    "tpope/vim-fugitive",
+    cmd = {
+      "G",
+      "Git",
+      "Gdiffsplit",
+      "Gread",
+      "Gwrite",
+      "Ggrep",
+      "GMove",
+      "GDelete",
+      "GBrowse",
+      "GRemove",
+      "GRename",
+      "Glgrep",
+      "Gedit"
+    },
+    ft = {"fugitive"}
+  },
   { 'christoomey/vim-tmux-navigator' },
   { 'eandrju/cellular-automaton.nvim' },
   { 'SirVer/ultisnips' },
